@@ -1,0 +1,1135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* STORM911 exact colors from website */
+    --primary: 15 100% 50%; /* Storm911 orange-red */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 13% 13%; /* Storm911 dark background */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 15 100% 50%; /* Storm911 accent color */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 15 100% 50%; /* Storm911 ring color */
+
+    --radius: 0.5rem;
+
+    /* STORM911 specific colors */
+    --storm-red: 0 70% 48%;
+    --storm-orange: 15 100% 50%;
+    --storm-dark: 220 13% 13%;
+    --storm-darker: 220 13% 9%;
+    --storm-blue: 210 100% 35%;
+    --storm-dark-blue: 210 100% 20%;
+    --storm-gray: 0 0% 30%;
+    --storm-light-gray: 0 0% 95%;
+
+    /* AssureCall colors */
+    --assurecall-blue: 208 65% 58%;
+    --assurecall-gray: 120 1% 33%;
+
+    /* Chart colors */
+    --chart-1: 15 100% 50%;
+    --chart-2: 210 100% 35%;
+    --chart-3: 0 70% 48%;
+    --chart-4: 208 65% 58%;
+    --chart-5: 120 1% 33%;
+  }
+
+  .dark {
+    /* Request #1: Lighten panel backgrounds, keep text dark */
+    --background: 220 13% 9%; /* Keep overall background dark */
+    --foreground: 0 0% 100%; /* Default text white */
+
+    /* Lighter panel background */
+    --panel-background-dark: 220 10% 25%; /* Lighter gray for panels */
+    --panel-foreground-dark: 0 0% 98%; /* Keep panel text light for contrast with panel bg */
+    --panel-border-dark: 220 10% 30%; /* Border for panels */
+
+    /* Dialog background */
+    --dialog-background-dark: 220 10% 20%; /* Slightly darker than panels */
+    --dialog-foreground-dark: 0 0% 98%;
+    --dialog-border-dark: 220 10% 25%;
+
+    /* Ensure text within panels/dialogs remains readable (mostly dark text on light bg in light mode) */
+    /* This is handled more specifically below */
+
+    --card: 220 13% 13%; /* Keep card dark */
+    --card-foreground: 0 0% 100%;
+
+    --popover: 220 13% 13%; /* Keep popover dark */
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 15 100% 50%; /* Storm911 orange-red */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 13% 18%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 13% 18%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 15 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 18%;
+    --input: 220 13% 18%;
+    --ring: 15 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow: hidden;
+  }
+}
+
+/* STORM911 specific styles */
+.storm-gradient {
+  background: linear-gradient(135deg, #ff5e00 0%, #e62e00 100%);
+}
+
+.storm-header {
+  background: #0e0e0e;
+  color: white;
+  border-bottom: 1px solid #ff5e00;
+}
+
+.storm-top-bar {
+  background: #ff5e00;
+  color: white;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.storm-nav-button {
+  background: #ff5e00;
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.storm-nav-button:hover {
+  background: #e62e00;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.transcript-header {
+  background: linear-gradient(to right, #ff5e00, #e62e00);
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.objection-header {
+  background: linear-gradient(to right, #e62e00, #cc2900);
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.caller-data-header {
+  background: linear-gradient(to right, #ff7e33, #ff5e00);
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.storm-button {
+  background: linear-gradient(to bottom, #ff5e00, #e62e00);
+  color: white;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.storm-button:hover {
+  background: linear-gradient(to bottom, #ff7e33, #ff5e00);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Request #1: Panel styling */
+.storm-panel {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid hsl(var(--border)); /* Use CSS var */
+  border-radius: 6px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(var(--card)); /* Use CSS var */
+}
+
+.dark .storm-panel {
+  background-color: hsl(var(--panel-background-dark));
+  border-color: hsl(var(--panel-border-dark));
+}
+
+.storm-progress-bar {
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.storm-progress-fill {
+  height: 100%;
+  transition: width 0.5s ease-in-out;
+}
+
+.storm-progress-fill-red {
+  background: linear-gradient(to right, #ff5f5f, #ff3333);
+}
+
+.storm-progress-fill-yellow {
+  background: linear-gradient(to right, #ffcc33, #ff9933);
+}
+
+.storm-progress-fill-green {
+  background: linear-gradient(to right, #66cc33, #339933);
+}
+
+/* Dialog styling */
+.storm-dialog-header {
+  background: linear-gradient(to right, #ff5e00, #e62e00);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.storm-dialog-content {
+  padding: 1rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.storm-dialog-footer {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #333;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* Circle icon containers like on Storm911.com */
+.storm-circle-icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #e62e00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.storm-circle-icon svg {
+  width: 60px;
+  height: 60px;
+  color: white;
+}
+
+/* Storm911 section titles */
+.storm-section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff5e00;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Storm911 form styling */
+.storm-form-input {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.75rem;
+  width: 100%;
+}
+
+.storm-form-button {
+  background: #ff5e00;
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.storm-form-button:hover {
+  background: #e62e00;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced button styling */
+.commercial-button {
+  background: linear-gradient(to bottom, #ff5e00, #e62e00);
+  color: white;
+  font-weight: bold;
+  border: 2px solid #cc2900;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.commercial-button:hover {
+  background: linear-gradient(to bottom, #ff7e33, #ff5e00);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.commercial-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced dialog styling */
+.commercial-dialog {
+  border: 2px solid #ff5e00;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  background-color: hsl(var(--card)); /* Use CSS var */
+}
+.dark .commercial-dialog {
+  background-color: hsl(var(--dialog-background-dark));
+  border-color: hsl(var(--dialog-border-dark));
+}
+
+.commercial-dialog-header {
+  background: linear-gradient(to right, #ff5e00, #e62e00);
+  color: white;
+  font-weight: bold;
+  padding: 1rem;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+/* Enhanced input styling */
+.commercial-input {
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  padding: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.commercial-input:focus {
+  border-color: #ff5e00;
+  box-shadow: 0 0 0 2px rgba(255, 94, 0, 0.2);
+  outline: none;
+}
+
+/* Button variants for different actions */
+.btn-next {
+  background: linear-gradient(to bottom, #ff8c00, #ff5e00);
+  border: 2px solid #e65100;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-next:hover {
+  background: linear-gradient(to bottom, #ff9d33, #ff7e33);
+  box-shadow: 0 4px 8px rgba(230, 81, 0, 0.3);
+}
+
+/* Request #5: Previous Button Color */
+.btn-previous {
+  /* background: linear-gradient(to bottom, #4caf50, #388e3c); */
+  /* border: 2px solid #2e7d32; */
+  background-color: #d1d5db; /* light gray */
+  border: 2px solid #9ca3af; /* slightly darker gray */
+  color: black;
+  font-weight: bold;
+}
+
+.btn-previous:hover {
+  /* background: linear-gradient(to bottom, #66bb6a, #4caf50); */
+  background-color: #9ca3af; /* darker gray on hover */
+  box-shadow: 0 4px 8px rgba(107, 114, 128, 0.3);
+}
+
+/* Request #6: End Call Button Color */
+.btn-end-call {
+  /* background: linear-gradient(to bottom, #f44336, #d32f2f); */
+  /* border: 2px solid #b71c1c; */
+  background-color: #4b5563; /* dark gray */
+  border: 2px solid #1f2937; /* darker gray */
+  color: white;
+  font-weight: bold;
+}
+
+.btn-end-call:hover {
+  /* background: linear-gradient(to bottom, #ef5350, #e53935); */
+  background-color: #374151; /* slightly darker gray on hover */
+  box-shadow: 0 4px 8px rgba(31, 41, 55, 0.3);
+}
+
+.btn-objection {
+  background: linear-gradient(to bottom, #d32f2f, #b71c1c);
+  border: 2px solid #8e0000;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-objection:hover {
+  background: linear-gradient(to bottom, #e53935, #c62828);
+  box-shadow: 0 4px 8px rgba(142, 0, 0, 0.3);
+}
+
+/* Ensure text visibility in transcript and caller data panels */
+/* Request #1: Ensure text is dark in dark mode panels */
+.transcript-content {
+  color: black !important; /* Always black */
+  font-size: 16px !important; /* Slightly smaller default font size */
+  line-height: 1.5 !important;
+  transition: font-size 0.2s ease;
+}
+
+/* Improve transcript content visibility */
+.transcript-content {
+  line-height: 1.4 !important;
+}
+
+/* .dark .transcript-content { */
+  /* color: white; */ /* Removed - text should stay dark */
+/* } */
+
+.caller-data-panel label,
+.caller-data-panel h3,
+.caller-data-panel span,
+.caller-data-panel div {
+  color: black !important; /* Always black */
+}
+
+/* .dark .caller-data-panel label,
+.dark .caller-data-panel h3,
+.dark .caller-data-panel span,
+.dark .caller-data-panel div { */
+  /* color: white; */ /* Removed - text should stay dark */
+/* } */
+
+/* Ensure input text is visible */
+input,
+select,
+textarea {
+  color: black !important;
+  background-color: white !important; /* Ensure light background */
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  color: black !important; /* Keep text black */
+  background-color: #e5e7eb !important; /* Light gray background for inputs in dark mode */
+  border-color: hsl(var(--panel-border-dark)) !important;
+}
+.dark input::placeholder,
+.dark select::placeholder,
+.dark textarea::placeholder {
+    color: #6b7280 !important; /* Gray placeholder text */
+}
+
+
+/* Ensure select trigger text is visible */
+.select-trigger-text {
+  color: black !important;
+}
+
+.dark .select-trigger-text {
+  color: black !important; /* Keep text black */
+}
+
+/* Ensure button text is visible (mostly handled by specific button styles) */
+/* button {
+  color: inherit;
+} */
+
+/* Fix for shadcn components */
+.text-popover-foreground {
+  color: hsl(var(--popover-foreground));
+}
+
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+/* Fix for tabs */
+.tabs-list {
+  background-color: #f0f0f0 !important;
+}
+
+.dark .tabs-list {
+  background-color: hsl(var(--panel-border-dark)) !important; /* Use panel border color */
+}
+
+.tab-trigger {
+  color: black !important;
+}
+
+.dark .tab-trigger {
+  color: hsl(var(--panel-foreground-dark)) !important; /* Light text for inactive tabs */
+}
+
+.tab-trigger[data-state="active"] {
+  background-color: white !important;
+  color: black !important;
+}
+
+.dark .tab-trigger[data-state="active"] {
+  background-color: hsl(var(--panel-background-dark)) !important; /* Active tab matches panel bg */
+  color: hsl(var(--panel-foreground-dark)) !important; /* Light text for active tab */
+}
+
+/* Fix for select content */
+.select-content {
+  background-color: white !important;
+  color: black !important;
+}
+
+.dark .select-content {
+  background-color: #374151 !important; /* Darker gray for dropdown */
+  color: white !important;
+}
+
+/* Fix for select items */
+.select-item {
+  color: black !important;
+}
+
+.dark .select-item {
+  color: white !important;
+}
+.dark .select-item[data-highlighted] {
+    background-color: hsl(var(--panel-border-dark)) !important; /* Highlight color */
+    color: white !important;
+}
+
+
+/* Add these styles to the end of the file */
+
+/* Editable field styling */
+.editable-field {
+  position: relative;
+  display: inline-block;
+  min-width: 50px;
+  transition: all 0.2s ease;
+  border: 1px dashed transparent;
+  color: black !important; /* Ensure editable field text is black */
+}
+.dark .editable-field {
+    color: black !important; /* Ensure editable field text is black in dark mode too */
+}
+
+
+.editable-field:hover {
+  border-color: #ff5e00;
+}
+
+.editable-field:focus {
+  outline: none;
+  border-color: #ff5e00;
+  background-color: rgba(255, 94, 0, 0.1);
+}
+
+/* Improved transcript text readability */
+.commercial-dialog .whitespace-pre-line {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: black !important; /* Ensure dialog text is black */
+}
+.dark .commercial-dialog .whitespace-pre-line {
+    color: hsl(var(--dialog-foreground-dark)) !important; /* Use dialog foreground color */
+}
+
+
+/* Ensure the main content area is properly sized */
+.min-h-screen {
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure the main content area takes up available space */
+.flex-1 {
+  flex: 1 1 0%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Ensure panels have proper scrolling */
+.storm-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 100%;
+}
+
+/* Ensure content areas can scroll properly */
+.flex-1.overflow-y-auto {
+  min-height: 0;
+  scrollbar-width: thin;
+}
+
+/* Ensure buttons are fully visible */
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Reduce padding in tight spaces */
+.p-4 {
+  padding: 0.75rem;
+}
+
+/* Ensure footer elements don't take too much space */
+.px-4.py-2 {
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}
+
+/* Make sure all content is visible */
+.min-h-0 {
+  min-height: 0 !important;
+}
+
+/* Ensure objection buttons are large enough */
+.objections-panel .button {
+  font-size: 12px !important;
+  padding: 4px 8px !important;
+  height: auto !important;
+  width: 100% !important;
+}
+
+/* Improve scrollbar visibility */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure buttons in transcript panel are visible */
+.transcript-panel .grid-cols-2 button {
+  font-size: 11px;
+  padding: 4px 6px;
+  white-space: normal;
+  height: auto;
+  min-height: 28px;
+}
+
+/* Make objection buttons more prominent */
+.objection-header + div + div button {
+  font-size: 12px !important;
+  padding: 4px 8px !important;
+  height: auto !important;
+  width: 100% !important;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Add these additional styles to ensure all content is visible */
+
+/* Improve transcript scrolling */
+.transcript-scroll-container {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-bottom: 10px;
+}
+
+/* Optimize transcript panel spacing */
+.transcript-scroll-container {
+  padding-top: 0;
+}
+
+/* Reduce spacing between title and content */
+.bg-gray-100.dark\:bg-gray-700.px-3.py-1 {
+  padding-bottom: 0.25rem;
+}
+.dark .bg-gray-100.dark\:bg-gray-700.px-3.py-1 {
+    background-color: hsl(var(--panel-border-dark)) !important; /* Match panel border */
+}
+
+
+/* Ensure transcript content starts closer to the title */
+.transcript-content {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Ensure the transcript panel uses space efficiently */
+.transcript-panel .flex-1 {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure transcript buttons are properly sized and visible */
+.transcript-button {
+  min-height: 40px !important;
+  display: flex;
+  align-items: center;
+  white-space: normal;
+  line-height: 1.2;
+  padding: 8px 10px !important;
+}
+
+/* Optimize objection buttons to fill available space */
+.objection-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.objection-button {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  white-space: normal;
+  line-height: 1.1;
+  padding: 2px 6px !important;
+  text-align: left;
+  font-size: 10px !important;
+  min-height: 28px !important;
+  margin-bottom: 2px;
+}
+
+/* Adjust spacing between objection buttons */
+.objection-buttons-container {
+  gap: 2px;
+  padding-right: 1px;
+}
+
+/* Ensure dialog content is fully visible */
+.commercial-dialog .max-h-\[60vh\] {
+  max-height: 75vh !important;
+}
+
+/* Improve dialog content readability */
+.commercial-dialog .whitespace-pre-line {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  white-space: pre-line;
+  overflow-wrap: break-word;
+}
+
+/* Ensure navigation buttons are properly aligned */
+.p-1.border-t.border-gray-300 .flex.justify-between.items-center {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.dark .p-1.border-t.border-gray-300 {
+    border-color: hsl(var(--panel-border-dark)) !important;
+}
+
+
+.p-1.border-t.border-gray-300 .flex.justify-between.items-center button {
+  height: 32px !important;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Ensure editable fields are visible */
+.editable-field {
+  background-color: rgba(59, 130, 246, 0.2);
+  border: 1px dashed rgba(59, 130, 246, 0.5);
+  border-radius: 4px;
+  padding: 2px 4px;
+  margin: 0 2px;
+  cursor: pointer;
+  display: inline-block;
+  min-width: 60px;
+}
+
+.editable-field:hover {
+  background-color: rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.8);
+}
+
+/* Ensure all content is visible in transcript */
+.transcript-content {
+  min-height: 100px;
+}
+
+/* Ensure dialog buttons are properly sized and visible */
+.commercial-dialog button {
+  min-height: 36px;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+/* Call timer styling */
+.call-timer {
+  font-family: monospace;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.call-timer.active {
+  color: #22c55e;
+}
+
+/* Enhanced dialog animations */
+@keyframes dialog-overlay-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-overlay-hide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes dialog-content-show {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes dialog-content-hide {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+}
+
+[data-state="open"] .dialog-overlay {
+  animation: dialog-overlay-show 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-state="closed"] .dialog-overlay {
+  animation: dialog-overlay-hide 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-state="open"] .dialog-content {
+  animation: dialog-content-show 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-state="closed"] .dialog-content {
+  animation: dialog-content-hide 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Enhanced button hover effects */
+.commercial-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.commercial-button:hover::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+/* Call notes styling */
+.note-card {
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.note-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.note-card.important {
+  border-left-color: #f59e0b;
+}
+
+/* Call history styling */
+.call-record {
+  transition: all 0.2s ease;
+}
+
+.call-record:hover {
+  transform: translateX(4px);
+}
+
+/* Keyboard shortcut styling */
+kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  display: inline-block;
+  border-radius: 3px;
+  line-height: 1.5;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Tooltip animations */
+@keyframes tooltip-slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-state="delayed-open"][data-side="top"] {
+  animation: tooltip-slide-up-fade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Improve scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Status badge animations */
+.status-badge[data-status="active"] .status-indicator {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+/* Improved focus styles */
+:focus-visible {
+  outline: 2px solid #ff5e00;
+  outline-offset: 2px;
+}
+
+/* Improved button transitions */
+button {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Improved panel transitions */
+.storm-panel {
+  transition: width 0.3s ease;
+}
+
+/* Add these styles to improve transcript content spacing */
+
+/* Remove all top margin/padding from transcript content */
+.transcript-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Ensure the transcript title bar has minimal height */
+.bg-gray-100.dark\:bg-gray-700.px-3.py-1 {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
+
+/* Remove any extra spacing in the transcript container */
+.transcript-scroll-container {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Ensure the transcript header is compact */
+.transcript-header {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
+
+/* Optimize spacing for response options */
+.transcript-scroll-container h4 {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* Ensure content fills available space */
+.transcript-content {
+  min-height: 0 !important;
+}
+
+/* Ensure the transcript panel uses space efficiently */
+.storm-panel > .flex-1 {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Ensure no scrolling is needed */
+/* .transcript-scroll-container {
+  overflow-y: visible !important;
+} */ /* Reverted: Scrolling is needed */
+
+/* Remove ALL top padding and margin from transcript content */
+.transcript-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Ensure the content container has no top padding */
+.flex-grow.px-2 {
+  padding-top: 0 !important;
+}
+
+/* Ensure the scroll container has no top padding */
+.flex-grow.flex.flex-col.overflow-auto {
+  padding-top: 0 !important;
+}
+
+/* Reduce the height of the title bar */
+.bg-gray-100.dark\:bg-gray-700.px-3.py-1 {
+  padding-top: 0.15rem !important;
+  padding-bottom: 0.15rem !important;
+}
+
+/* Reduce the height of the transcript header */
+.transcript-header {
+  padding-top: 0.15rem !important;
+  padding-bottom: 0.15rem !important;
+}
+
+/* Add these fade-in animations to the end of your globals.css file */
+
+/* Remove these animations that might be causing the loop */
+
+/* Ensure Combobox popover content has appropriate dark mode styling */
+.dark .cmdk-list {
+    background-color: #374151 !important; /* Match select content */
+    color: white !important;
+}
+.dark .cmdk-item {
+    color: white !important;
+}
+.dark .cmdk-item[data-selected='true'], .dark .cmdk-item:hover {
+    background-color: hsl(var(--panel-border-dark)) !important; /* Match select highlight */
+}
+.dark .cmdk-input {
+    background-color: #e5e7eb !important; /* Match input background */
+    color: black !important; /* Match input text */
+}
+
+
+
